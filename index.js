@@ -51,4 +51,4 @@ async function uploaderForGoogleDriveResumableUploadUrl({
   });
 }
 
-module.exports.uploaderForGoogleDriveResumableUploadUrl = uploaderForGoogleDriveResumableUploadUrl;
+module.exports = uploaderForGoogleDriveResumableUploadUrl;
