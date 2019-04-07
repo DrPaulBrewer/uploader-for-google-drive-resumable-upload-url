@@ -1,0 +1,29 @@
+{
+  "name": "uploader-for-google-drive-resumable-upload-url",
+  "version": "0.1.0",
+  "description": "uploader for Resumable Upload urls from Google Drive API v3",
+  "main": "index.js",
+  "dependencies": {
+    "digest-stream": "^2.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DrPaulBrewer/uploader-for-google-drive-resumable-upload-url.git"
+  },
+  "keywords": [
+    "google-drive-api",
+    "resumable-upload",
+    "javascript",
+    "node.js"
+  ],
+  "author": "drpaulbrewer@eaftc.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DrPaulBrewer/uploader-for-google-drive-resumable-upload-url/issues"
+  },
+  "homepage": "https://github.com/DrPaulBrewer/uploader-for-google-drive-resumable-upload-url#readme"
+}
