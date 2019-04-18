@@ -27,9 +27,9 @@ async function uploaderForGoogleDriveResumableUploadUrl({
       'Content-Type': mimeType
     }
   };
-  return new Promise(function (resolve) {
+  return new Promise(function (resolve, reject) {
     const uploadRequest = request(driveupload, (err, response, body) => {
-      if (err) throw new Error("upload error code: "+(response && response.statusCode)+" "+err);
+      if (err) return reject(new Error("upload error code: "+(response && response.statusCode)+" "+err));
       let result;
       if (typeof(body) === 'string') {
         try {
@@ -42,7 +42,7 @@ async function uploaderForGoogleDriveResumableUploadUrl({
         // check md5 only on binary data, and only if reported back by Google Drive API
         result.ourMD5 = md5; // set ours here too
         if (md5 !== result.md5Checksum) {
-          throw new Error('bad md5 checksum on upload to Google Drive:', JSON.stringify(result));
+          return reject(new Error('bad md5 checksum on upload to Google Drive:', JSON.stringify(result)));
         }
       }
       resolve(result);
