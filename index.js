@@ -34,8 +34,8 @@ async function uploaderForGoogleDriveResumableUploadUrl({
   if (axios){
     const options = {
       headers,
-      maxContentLength: Infinity,
-      maxBodyLength: Infinity
+      maxContentLength: 1024*1024*1024*1024, // 1 TB
+      maxBodyLength: 1024*1024*1024*1024
     };
     const response = await axios.post(url,dataStream,options);
     if (response.status>=400){
