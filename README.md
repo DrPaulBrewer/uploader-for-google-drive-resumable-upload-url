@@ -1,5 +1,9 @@
 # uploader-for-google-drive-resumable-upload-url
 
+version 2.x:
+Rewritten to support axios instead of request, as request has been deprecated by its maintainers.
+
+version 1.x:
 This upload code was isolated from npm:decorated-google-drive and cleaned up a bit.
 
 It handles the upload to a Google API v3 Resumable Upload URL provided from
@@ -12,16 +16,18 @@ checking the MD5 signature, and returning the new Google Drive file object.
 
 Pre-requisites are:
 1. an external source of Google Drive API v3 Resumable Upload Urls (e.g. a service running npm: googleapis and perhaps npm: decorated-google-drive )
-1. npm:request
+1. npm:request for v1.x, npm:axios for v2.x
 
 ```
-npm i request -S
+npm i request -S  # for v1.x only
+npm i axios -S    # for v2.x only
 npm i uploader-for-google-drive-resumable-upload-url -S
 ```
 
 ### Use
 
-    const request = require('request');
+    const request = require('request'); // for v1.x
+    const axios = require('axios'); // for v2.x    
     const uploader = require('uploder-for-google-drive-resumable-upload-url');
     async function processTheUpload(url, pathToLocalSourceFile){
       const sourceStream = fs.createReadStream(pathToLocalSourceFile);
@@ -30,7 +36,8 @@ npm i uploader-for-google-drive-resumable-upload-url -S
         sourceStream,
         mimeType,
         url,
-        request // the npm: request module
+        request // the npm: request module for v1.x
+        axios // the npm: axios module for v2.x
       };
       const result = await uploader(params);
       return result;
@@ -75,7 +82,7 @@ generated in that code.  We regularly test that code.
 
 ## License: MIT
 
-This code Copyright 2017, 2019- Paul Brewer, Economic and Financial Technology Consulting LLC <drpaulbrewer@eaftc.com>
+This code Copyright 2017, 2019, 2020 Paul Brewer, Economic and Financial Technology Consulting LLC <drpaulbrewer@eaftc.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

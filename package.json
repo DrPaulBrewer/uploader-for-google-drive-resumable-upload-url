@@ -6,7 +6,9 @@
   "dependencies": {
     "digest-stream": "^2.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint": "^7.6.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
