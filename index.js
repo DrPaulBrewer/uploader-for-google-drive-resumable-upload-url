@@ -32,7 +32,12 @@ async function uploaderForGoogleDriveResumableUploadUrl({
       'Content-Type': mimeType
   };
   if (axios){
-    const response = await axios.post(url,dataStream,headers);
+    const options = {
+      headers,
+      maxContentLength: Infinity,
+      maxBodyLength: Infinity
+    };
+    const response = await axios.post(url,dataStream,options);
     if (response.status>=400){
       throw new Error(`upload error code: ${response.status} ${response.statusText}`);
     }
