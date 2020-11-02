@@ -17,7 +17,7 @@ async function uploaderForGoogleDriveResumableUploadUrl({
   mimeType,
   url,
   axios,
-  urlPrefix = "https://www.googleapis.com"
+  urlPrefix = "https://www.googleapis.com/"
 }) {
   if (typeof(url) !== "string") throw new Error("url should be a string");
   if (!(url.startsWith(urlPrefix))) throw new Error("incorrect url, got:" + url);
